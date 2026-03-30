@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# bibliotec-ui
+
+Frontend interface for the Bibliotec library management system, built with Next.js. This repository is part of a larger academic project that implements core data structures — including linked lists, queues, and stacks — to manage book inventory, loan records, and user profiles.
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Features](#features)
+- [Contributing](#contributing)
+
+---
+
+## Overview
+
+`bibliotec-ui` provides the user-facing layer of the Bibliotec system. It communicates with the backend to expose two distinct profiles: a **Librarian** profile for administrative operations and a **Student** profile for borrowing and managing loans.
+
+The backend of this system is developed as a separate repository and implements the following data structures from scratch:
+
+- `Libro` — node class representing a book
+- `Cola` — queue-based list for managing book inventory
+- `Registro` — node class representing a loan record
+- `Pila` — stack-based list for tracking loan history
+- `Usuario` — class representing a system user
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── (content)/            # Public-facing route group
+│   └── (private)/            # Protected route group
+│   ├── favicon.ico
+│   ├── globals.css
+│   └── layout.tsx            # Root layout
+├── asserts/
+│   ├── fonts/                # Local font files
+│   └── images/               # Static images
+├── components/
+│   ├── content/              # Page-level components
+│   └── ui/                   # Reusable UI primitives
+│   └── providers.tsx         # Global context providers
+└── features/
+    ├── dashboard/            # Librarian and student dashboard logic
+    └── login/                # Authentication feature
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- [Bun](https://bun.sh) 1.0 or higher
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+git clone https://github.com/your-org/bibliotec-ui.git
+cd bibliotec-ui
+bun install
+```
+
+### Development
+
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+bun run build
+bun start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Librarian Profile
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Feature | Description |
+|---|---|
+| Save Book | Register a new book into the system |
+| View All Books | List the complete book inventory |
+| View Single Book | Look up a specific book by identifier |
+| Change Status | Update the availability status of a book |
+| Process Loan | Initiate a book loan for a student |
+| Renewal | Extend the loan period for a borrowed book |
+| Return | Register the return of a borrowed book |
 
-## Deploy on Vercel
+### Student Profile
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Feature | Description |
+|---|---|
+| View Books | Browse available books in the library |
+| Take Book | Reserve or check out a book |
+| Process Loan | Submit a loan request |
+| Renewal | Request an extension on an active loan |
+| Return | Register the return of a borrowed book |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+
+
+## Contributing
+
+1. Fork the repository
+2. Create a new branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "feat: describe your change"`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+Please follow the existing code style and keep pull requests focused on a single concern.
+
+---
+
+## License
+
+This project is developed for academic purposes. See `LICENSE` for details.
